@@ -136,7 +136,7 @@ footer {
   -webkit-order: 3; }
 
 * {
-  font-family: "PTSansRegular", sans-serif; }
+  font-family: 'Lato', sans-serif; }
 
 body {
   background-color: #f3f3f3; }
@@ -225,103 +225,189 @@ p {
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn .9s ease-out 1 forwards; }
+  animation: fadeIn .9s ease-out 1.3s forwards; }
 
 .is-paused {
   animation-play-state: paused; }
 
-h3 {
-  font-size: 17px;
-  color: #fff;
-  font-weight: bold; }
-
-.wrap {
-  margin: 50px auto 30px auto;
-  max-width: 900px; }
-
-.table-wrapper {
+/* clock*/
+.navbar {
+  border-bottom: 2px solid #e3e1e1;
   background-color: #fff;
-  border: 1px solid #e0e0e0;
-  margin-bottom: 20px; }
-  .table-wrapper .table-control {
-    background-color: #5f6670;
-    padding: 15px 12px;
+  padding: 15px 20px; }
+  .navbar .buttons {
     display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-pack: justify;
-        justify-content: space-between; }
-    .table-wrapper .table-control .search {
-      position: relative;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-direction: row;
-          flex-direction: row;
-      -ms-flex-line-pack: center;
-          align-content: center;
-      -ms-flex-align: center;
-          align-items: center;
-      -ms-flex-pack: start;
-          justify-content: flex-start; }
-      .table-wrapper .table-control .search .btn-search {
-        margin-left: 5px; }
-  .table-wrapper .todoListTable {
-    margin-bottom: 0; }
-    .table-wrapper .todoListTable thead th {
-      background-color: #6e7681;
+    display: flex; }
+  .navbar .switchMode {
+    margin-right: 40px; }
+
+.dashboard {
+  margin-bottom: 40px;
+  margin-top: 40px; }
+  .dashboard__item {
+    display: inline-block;
+    background-color: #fff;
+    padding-right: 30px;
+    margin-right: 40px;
+    position: relative;
+    height: 100%;
+    font-size: 16px;
+    border: 2px solid #e3e1e1;
+    border-top: 0;
+    border-left: 0; }
+    .dashboard__item .icon {
       color: #FFF;
-      border-top: none; }
+      font-size: 28px;
+      min-height: 100%;
+      display: inline-block;
+      padding: 20px 30px;
+      margin-right: 20px; }
+      .dashboard__item .icon-orange {
+        background-color: #F77D68; }
+      .dashboard__item .icon-blue {
+        background-color: #54BFE1; }
 
-.dropdown-search {
-  position: absolute;
-  transform: translate3d(1px, 38px, 0px);
-  min-width: 185px;
-  top: 0px;
-  left: 0px;
-  will-change: transform;
-  box-sizing: border-box; }
-  .dropdown-search .dropdown-item {
-    padding: .25rem 1rem !important;
-    font-size: 14px; }
-  .dropdown-search[aria-expanded=false] {
-    visibility: hidden; }
-  .dropdown-search[aria-expanded=true] {
+.clock h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2F3A4C; }
+  .clock h3 svg {
+    margin-right: 10px;
+    color: #2F3A4C; }
+
+.clock .digital {
+  display: -ms-flexbox;
+  display: flex; }
+  .clock .digital div[class$="-wrapper"] {
+    position: relative;
+    width: 340px;
+    height: 140px;
+    box-sizing: border-box;
+    margin-right: 40px; }
+  .clock .digital span {
+    background-color: #fff;
+    color: #4e555b;
     display: block;
-    visibility: visible; }
+    padding: 40px 0;
+    width: 100%;
+    height: 100%;
+    font-size: 56px;
+    text-align: center;
+    border: 2px solid #e3e1e1;
+    border-top: 0;
+    font-family: 'Inconsolata', monospace; }
 
-.btn-showAll {
-  color: #17a2b8;
-  text-decoration: none; }
-  .btn-showAll:hover {
-    color: #117a8b;
-    text-decoration: none; }
-
-.btn-loadMore {
-  margin-right: 20px; }
-  .btn-loadMore svg {
-    margin-left: 5px; }
-
-.complete {
-  font-size: 16px;
-  text-align: center; }
-
-svg.fa-check {
-  color: #f26060; }
-
-svg.fa-minus {
-  color: #c7cbd0; }
+.clock .analog div {
+  display: inline-block;
+  margin-right: 40px; }
 
 .hidden {
+  display: none !important; }
+
+.analogClockTmp {
   display: none; }
 
-p.alert {
-  font-size: 16px; }
+.outer_face {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 250px;
+  background: white;
+  box-shadow: inset 0 0 10px gray;
+  border: 4px solid black; }
 
+.outer_face::before, .outer_face::after, .outer_face .marker {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: black;
+  z-index: 0;
+  left: 50%;
+  margin-left: -2.7px;
+  top: 0; }
+
+.outer_face::after {
+  transform: rotate(90deg); }
+
+.outer_face .marker {
+  background: gray;
+  width: 4px;
+  margin-left: -2px; }
+
+.outer_face .marker.oneseven {
+  transform: rotate(30deg); }
+
+.outer_face .marker.twoeight {
+  transform: rotate(60deg); }
+
+.outer_face .marker.fourten {
+  transform: rotate(120deg); }
+
+.outer_face .marker.fiveeleven {
+  transform: rotate(150deg); }
+
+.inner_face {
+  position: relative;
+  width: 88%;
+  height: 88%;
+  background: white;
+  border-radius: 1000px;
+  z-index: 1000;
+  left: 6%;
+  top: 6%; }
+
+.inner_face::before {
+  /* clock center circle small */
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  margin-left: -9px;
+  margin-top: -9px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 30px gray; }
+
+.inner_face::after {
+  content: "QUARTZ";
+  position: absolute;
+  width: 100%;
+  font: normal 0.5em Arial;
+  color: gray;
+  text-align: center;
+  top: 85%; }
+
+.hand, .hand.hour {
+  position: absolute;
+  width: 3px;
+  height: 30%;
+  top: 20%;
+  left: 50%;
+  margin-left: -2px;
+  background: black;
+  transform: rotate(0deg);
+  transform-origin: bottom;
+  z-index: -1;
+  box-shadow: 0 0 3px gray; }
+
+.hand.minute {
+  height: 45%;
+  top: 5%;
+  width: 4px;
+  margin-left: -3px; }
+
+.hand.second {
+  height: 50%;
+  width: 2px;
+  margin-left: -1px;
+  top: 0;
+  background: red; }
+
+/*....*/
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   body {
     min-height: 100hv;

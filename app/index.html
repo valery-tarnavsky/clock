@@ -3,25 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>User Table</title>
-<!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-grid.css" />-->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     <link rel="stylesheet" href="css/style.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-grid.css" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     --><link rel="stylesheet" href="css/style.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato|Montserrat" rel="stylesheet">
 </head>
 <body>
 
+<nav class="navbar">
+    <div class="container">
+        <div class="buttons">
+            <div class="btn-group btn-group-toggle switchMode" data-toggle="buttons">
+                <label class="btn btn-light btn-sm active" data-target="digital">
+                    <input type="radio" name="options"  autocomplete="off" checked> Цифровые
+                </label>
+                <label class="btn btn-light btn-sm"  data-target="analog">
+                    <input type="radio" name="options"  autocomplete="off"> Аналоговые
+                </label>
+            </div>
+
+            <div class="dropdown">
+                <button id="dLabel" type="button" class="btn btn-warning dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Добавить часы
+                </button>
+                <div class="dropdown-menu add" aria-labelledby="dLabel">
+                    <a class="dropdown-item" data-target="tokio" href="#">Токио</a>
+                    <a class="dropdown-item" data-target="paris" href="#">Париж</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
 <div class="container">
+    <div class="dashboard">
+        <div class="dashboard__item date">
+            <div class="icon icon-orange"><i class="far fa-calendar-alt"></i></div>
+        </div>
+        <div class="dashboard__item daysCounter">
+            <div class="icon icon-blue"><i class="far fa-comment-alt"></i></div>
+        </div>
+    </div>
+    <div class="clock">
+        <div class="digital fade-in">
+            <div class="local-wrapper">
+                <h3><i class="fas fa-map-marker-alt"></i> Местное время</h3>
+                <span class="local"></span>
+            </div>
+        </div>
+
+        <div class="analog fade-in hidden">
+            <div class="local-wrapper">
+                <h3><i class="fas fa-map-marker-alt"></i> Местное время</h3>
+                <div id="local" class="outer_face">
+                    <div class="marker oneseven"></div>
+                    <div class="marker twoeight"></div>
+                    <div class="marker fourten"></div>
+                    <div class="marker fiveeleven"></div>
+                    <div class="inner_face">
+                        <div class="hand hour" style="transform: rotate(0deg);"></div>
+                        <div class="hand minute" style="transform: rotate(0deg);"></div>
+                        <div class="hand second" style="transform: rotate(0deg);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="analogClockTmp outer_face ">
+        <div class="marker oneseven"></div>
+        <div class="marker twoeight"></div>
+        <div class="marker fourten"></div>
+        <div class="marker fiveeleven"></div>
+        <div class="inner_face">
+            <div class="hand hour" style="transform: rotate(0deg);"></div>
+            <div class="hand minute" style="transform: rotate(0deg);"></div>
+            <div class="hand second" style="transform: rotate(0deg);"></div>
+        </div>
+    </div>
 
 </div>
 
-<!--<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>-->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<!--
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script src="js/script.js"></script>
-<script src="js/service.js"></script>
 </body>
 </html>
