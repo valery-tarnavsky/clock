@@ -15,6 +15,7 @@ function Clock(elems) {
         that._mode = e.target.getAttribute('data-target');
         handleModeSwiching(that._mode);
     }
+
     function handleModeSwiching(target) {
         var mode = target == "digital"
         digital.classList.toggle("hidden", !mode);
@@ -51,6 +52,7 @@ function Clock(elems) {
 
     this.formatDate = function (date) {
         return {
+            day     : date.day,
             weekDay : that._weekDaysNames[date.weekDay],
             month   : that._monthNames[date.month]
         };
@@ -64,10 +66,16 @@ function Clock(elems) {
     };
 
     function createDigitalTmp(obj) {
-        return `<div class=${obj.className}-wrapper><h3><i class="fas fa-globe"></i> ${obj.title}</h3><span class=${obj.className}></span></div>`;
+        return `<div class="${obj.className}-wrapper">
+                    <a class="deleteClock" id="${obj.id}">&times</a>
+                    <h3><i class="fas fa-globe"></i> ${obj.title}</h3>
+                    <span class=${obj.className}></span>
+                </div>`;
     }
+
     function createAnalogTmp(obj) {
         return `<div class=${obj.className}-wrapper>\n
+                    <a class="deleteClock" id="${obj.id}">&times</a>
                     <h3><i class="fas fa-globe"></i> ${obj.title}</h3>
                     <div id=${obj.className} class="outer_face ">\n
                         <div class="marker oneseven"></div>\n
@@ -87,6 +95,7 @@ function Clock(elems) {
         var target = document.querySelector(selector);
         return target ? target : that.printMore(digital, createDigitalTmp(obj));
     }
+
     function getDomElementForAnalog(obj) {
         var target = document.getElementById(obj.className);
         return target ? target : that.printMore(analog, createAnalogTmp(obj));
@@ -108,17 +117,16 @@ function Clock(elems) {
         that._mode === "digital" ? toDigitalClock(obj) : toAnalogClock(obj);
     };
 
-    /*window.requestAnimationFrame = window.requestAnimationFrame || function(f){return setTimeout(f, 1000/60)};*/
     function runAnalogClock(time, el){
         var hour = el.querySelector('.hour');
         var minute = el.querySelector('.minute');
         var second = el.querySelector('.second');
-        var hour_as_degree = ( time.hours + time.minutes/60 ) / 12 * 360;
-        var minute_as_degree = time.minutes / 60 * 360;
-        var second_as_degree = ( time.seconds) /60 * 360;
-        hour.style.transform = "rotate(" + hour_as_degree + "deg)";
-        minute.style.transform = "rotate(" + minute_as_degree + "deg)";
-        second.style.transform = "rotate(" + second_as_degree + "deg)";
+        var hourAsDegree = ( time.hours + time.minutes/60 ) / 12 * 360;
+        var minuteAsDegree = time.minutes / 60 * 360;
+        var secondAsDegree = ( time.seconds) /60 * 360;
+        hour.style.transform = "rotate(" + hourAsDegree + "deg)";
+        minute.style.transform = "rotate(" + minuteAsDegree + "deg)";
+        second.style.transform = "rotate(" + secondAsDegree + "deg)";
     }
 }
 
@@ -154,11 +162,21 @@ function LocalClock(){
 
     this.printDate = function(){
         var date = that.getDate(),
-            day = date.day,
-            {weekDay, month} = that.formatDate(date),
+            {day, weekDay, month} = that.formatDate(date),
             msg = "Сегодня "+ weekDay +', '+ day +" "+ getCorrectStrCase(month);
         that.printMore(todayDate, msg);
     };
+
+    function getTimeToMidnight(){
+        var now = that.getDate();
+        var nextDay = that.getDate([now.year, now.month, now.day+1]);
+        return nextDay.millisec - now.millisec;
+    }
+
+    setTimeout(function () {
+        that.printDaysUntilNewYear();
+        that.printDate();
+    }, getTimeToMidnight());
 
     function getLocalTime(){
         return that.getDate().millisec;
@@ -183,17 +201,32 @@ function AdditionalClock(elems){
         data =  {
                 tokio: {
                     title: 'Токио',
-                    coordinates: '35.731252, 139.730291',
-                    offset: null
+                    coordinates: '35.731252, 139.730291'
                 },
                 paris: {
                     title: 'Париж',
-                    coordinates: '48.856805, 2.348242',
-                    offset: null
+                    coordinates: '48.856805, 2.348242'
                 }
                 },
         displayedData = [];
 
+    function findIndex(arr, prop, val){
+        return arr.map(function(find) { return find[prop]; }).indexOf(val);
+    }
+
+    function deleteClock(){
+        var target = event.target;
+        if (target.tagName != 'A') {return}
+        var divElem = target.closest("DIV");
+        var className = divElem.className;
+        var wrappersToDelete = document.getElementsByClassName(className);
+        var index = findIndex(displayedData, "id", +target.id);
+        displayedData.splice(index, 1);
+        divElem.remove();
+        for (var i = 0; i < wrappersToDelete.length; i++) {
+            wrappersToDelete[i].remove();
+        }
+    }
 
     function init(e){
         var apikey = 'AIzaSyC6Tmrk6uAq_l2TLb_DymH8rVPG_FbAPlc',
@@ -210,35 +243,40 @@ function AdditionalClock(elems){
         return fetch(url).then(function(res) {
             return res.json();
         }).then(function(res){
-            var timeOffset = that.getDate().tzOffset * 60 * 1000 + res.dstOffset*1000 + res.rawOffset*1000;
-            displayedData.push({id : target, offset: timeOffset, title: title});
-            that.runClock(displayedData);
+            var timeOffset = that.getDate().tzOffset * 60 * 1000 + res.dstOffset*1000 + res.rawOffset*1000 -1.5;
+            displayedData.push({id : displayedData.length, target: target, offset: timeOffset, title: title});
+            that.runClock();
         })
     }
 
     this.initListeners = function() {
-        elems.addButton.addEventListener('click', init)
+        elems.addButton.addEventListener('click', init);
+        elems.clockWrap.addEventListener('click', deleteClock);
     };
 
     function getLocalTime(){
         return that.getDate().millisec;
     }
 
-    this.runClock = function(data){
-        data.forEach(function (item) {
-            setInterval(function(){
+    this.runClock = function(){
+        setInterval(function(){
+            if(displayedData.length < 0){return}
+            displayedData.forEach(function (item) {
                 that.refreshTime({
+                    id: item.id,
                     time: getLocalTime() + item.offset,
-                    className: item.id,
+                    className: item.target,
                     title: item.title
                 })
-            }, 1000);
-        })
+            })
+        }, 1000);
+
 
     }
 }
 
 var additionalClock = new AdditionalClock({
-    addButton : document.querySelector('.add')
+    addButton : document.querySelector('.add'),
+    clockWrap : document.querySelector('.clock')
 });
 additionalClock.initListeners();

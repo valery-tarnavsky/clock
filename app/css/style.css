@@ -274,7 +274,7 @@ p {
   color: #2F3A4C; }
   .clock h3 svg {
     margin-right: 10px;
-    color: #2F3A4C; }
+    color: #4f5968; }
 
 .clock .digital {
   display: -ms-flexbox;
@@ -298,9 +298,21 @@ p {
     border-top: 0;
     font-family: 'Inconsolata', monospace; }
 
+.clock .analog div[class$="-wrapper"] {
+  position: relative; }
+
 .clock .analog div {
   display: inline-block;
   margin-right: 40px; }
+
+.deleteClock {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer; }
 
 .hidden {
   display: none !important; }

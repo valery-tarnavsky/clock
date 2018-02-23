@@ -140,7 +140,7 @@ p{
 
 		svg{
 			margin-right: 10px;
-			color: #2F3A4C;
+			color: #4f5968;
 		}
 	}
 	.digital {
@@ -169,11 +169,26 @@ p{
 	}
 
 	.analog{
+		div[class$="-wrapper"]{
+			position: relative;
+		}
 		div{
 			display: inline-block;
 			margin-right: 40px;
 		}
 	}
+
+}
+
+.deleteClock{
+	position: absolute;
+	right:0;
+	top:0;
+	display: block;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+
 }
 
 .hidden {
