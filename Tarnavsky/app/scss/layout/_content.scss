@@ -78,7 +78,7 @@ p{
 
 .fade-in {
 	opacity: 0;
-	animation: fadeIn .9s ease-out forwards;
+	animation: fadeIn .9s ease-out 1.3s forwards;
 }
 
 .is-paused {
@@ -100,22 +100,6 @@ p{
   .alarm{
     float: right;
   }
-	.container{
-		display: flex;
-		justify-content: space-between;
-	}
-	.navigation{
-		ul {
-			list-style: none;
-			li{
-				display: inline-block;
-				margin-right: 10px;
-				a{
-					color: #1b232e;
-				}
-			}
-		}
-	}
 }
 
 .dashboard{
@@ -149,8 +133,6 @@ p{
 		}
 	}
 }
-
-
 
 .clock{
   margin-bottom: 140px;
@@ -213,6 +195,13 @@ p{
 
 }
 
+a.delete{
+	display: block;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+
 .hidden {
 	display: none!important;
 }
@@ -220,120 +209,18 @@ p{
 	display: none;
 }
 
-.alarmPage{
-	margin-top: 40px;
-	max-width: 600px;
-	.clock{
-		margin-bottom: 60px;
-		.digital{
-			div[class$="-wrapper"]{
-				position: relative;
-				width: 250px;
-				height: 100px;
-				box-sizing: border-box;
-				margin-right: 40px;
-			}
-			span{
-				background-color: #fff;
-				color: #4e555b;
-				display: block;
-				padding: 30px 0;
-				width: 100%;
-				height: 100%;
-				font-size: 40px;
-				text-align: center;
-				border: 2px solid #e3e1e1;
-				border-top: 0;
-				font-family: 'Inconsolata', monospace;
-			}
-		}
-	}
-}
-
 .alarmWrapper{
-	svg{
-		font-size: 16px;
-		cursor: pointer;
-		color: #565555;
-		display: inline-block;
-		min-width: 20px;
-		min-height: 20px;
-	}
-	.addAlarmWrap{
-		margin-bottom: 15px;
-	}
 	input{
 		width: 55px;
 		display: inline-block;
 	}
 
-	.addAlarm{
-		display: inline-block;
-		margin-left: 15px;
-	}
-	.alarmListTable {
-		.timeSeparator{
-			font-size: 18px;
-		}
-		a {
-			&.delete {
-				position: relative;
-				display: block;
-				width: 20px;
-				height: 20px;
-				z-index: 20;
-				background-color: rgba(255, 255, 255, 1);
-
-			}
-			i, svg {
-				position: relative;
-				z-index: 0 !important;
-				border: 1px salmon solid;
-			}
-		}
-
-		.editInput {
-			border: 0;
-			background: transparent;
-			width: 25px;
-		}
-		.editHours {
-			padding: 3px 0px 3px 6px;
-		}
-		.editMinutes {
-			padding: 3px 5px 3px 2px;
-		}
-
-		.bordered {
-			border: 1px solid #c0c3c6;
-		}
-
-		.edit{
-			margin-left: 20px;
-			margin-right: 20px;
-		}
-	}
-	.notification{
-		min-height: 40px;
-		position: relative;
-		font-size: 14px;
-		box-sizing: border-box;
-		.noAlarmsMsg{
-			background: #eae9e9;
-			padding: 12px 20px;
-			color: #898888;
-		}
-		.notifyMsg {
-			/*position: absolute;*/
-		}
-		.alarmTrigger {
-			background-color: #e7b2b2;
-			font-size: 18px;
-			color: #444242;
-		}
- 	}
-	.timeSeparator{
-		font-size: 20px;
+  .addAlarm{
+	  display: inline-block;
+	  margin-left: 15px;
+  }
+	.alarmListTable{
+		margin-top: 40px;
 	}
 }
 

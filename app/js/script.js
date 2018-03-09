@@ -9,7 +9,7 @@ function Clock(elems) {
     this._weekDaysNames = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
     this._mode = "digital";
 
-    switchMode.addEventListener('click', setMode);
+    switchMode && switchMode.addEventListener('click', setMode);
 
     function setMode(e) {
         that._mode = e.target.getAttribute('data-target');
@@ -43,6 +43,8 @@ function Clock(elems) {
         };
     };
 
+
+
     this.formatTime = function (time){
         for (var k in time) {
             time[k] = time[k] < 10  ? ('0'+ time[k]) : time[k];
@@ -62,7 +64,7 @@ function Clock(elems) {
         elem.innerText = target;
     };
     this.printMore = function (elem, target){
-        elem.insertAdjacentHTML("beforeend", target);
+        elem && elem.insertAdjacentHTML("beforeend", target);
     };
 
     function createDigitalTmp(obj) {
@@ -151,7 +153,7 @@ function LocalClock(){
     function getCorrectNumCase(number) {
         var titles = ['день', 'дня', 'дней'],
             cases = [2, 0, 1, 1, 1, 2];
-        return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+        return titles[(number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5]];
     }
 
     this.printDaysUntilNewYear = function () {
@@ -250,8 +252,8 @@ function AdditionalClock(elems){
     }
 
     this.initListeners = function() {
-        elems.addButton.addEventListener('click', init);
-        elems.clockWrap.addEventListener('click', deleteClock);
+        elems.addButton && elems.addButton.addEventListener('click', init);
+        elems.clockWrap && elems.clockWrap.addEventListener('click', deleteClock);
     };
 
     function getLocalTime(){

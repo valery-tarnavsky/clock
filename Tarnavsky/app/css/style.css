@@ -225,7 +225,7 @@ p {
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn .9s ease-out forwards; }
+  animation: fadeIn .9s ease-out 1.3s forwards; }
 
 .is-paused {
   animation-play-state: paused; }
@@ -242,18 +242,6 @@ p {
     margin-right: 40px; }
   .navbar .alarm {
     float: right; }
-  .navbar .container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: justify;
-        justify-content: space-between; }
-  .navbar .navigation ul {
-    list-style: none; }
-    .navbar .navigation ul li {
-      display: inline-block;
-      margin-right: 10px; }
-      .navbar .navigation ul li a {
-        color: #1b232e; }
 
 .dashboard {
   margin-bottom: 40px;
@@ -327,46 +315,17 @@ p {
   height: 15px;
   cursor: pointer; }
 
+a.delete {
+  display: block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer; }
+
 .hidden {
   display: none !important; }
 
 .analogClockTmp {
   display: none; }
-
-.alarmPage {
-  margin-top: 40px;
-  max-width: 600px; }
-  .alarmPage .clock {
-    margin-bottom: 60px; }
-    .alarmPage .clock .digital div[class$="-wrapper"] {
-      position: relative;
-      width: 250px;
-      height: 100px;
-      box-sizing: border-box;
-      margin-right: 40px; }
-    .alarmPage .clock .digital span {
-      background-color: #fff;
-      color: #4e555b;
-      display: block;
-      padding: 30px 0;
-      width: 100%;
-      height: 100%;
-      font-size: 40px;
-      text-align: center;
-      border: 2px solid #e3e1e1;
-      border-top: 0;
-      font-family: 'Inconsolata', monospace; }
-
-.alarmWrapper svg {
-  font-size: 16px;
-  cursor: pointer;
-  color: #565555;
-  display: inline-block;
-  min-width: 20px;
-  min-height: 20px; }
-
-.alarmWrapper .addAlarmWrap {
-  margin-bottom: 15px; }
 
 .alarmWrapper input {
   width: 55px;
@@ -376,58 +335,8 @@ p {
   display: inline-block;
   margin-left: 15px; }
 
-.alarmWrapper .alarmListTable .timeSeparator {
-  font-size: 18px; }
-
-.alarmWrapper .alarmListTable a.delete {
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 20px;
-  z-index: 20;
-  background-color: white; }
-
-.alarmWrapper .alarmListTable a i, .alarmWrapper .alarmListTable a svg {
-  position: relative;
-  z-index: 0 !important;
-  border: 1px salmon solid; }
-
-.alarmWrapper .alarmListTable .editInput {
-  border: 0;
-  background: transparent;
-  width: 25px; }
-
-.alarmWrapper .alarmListTable .editHours {
-  padding: 3px 0px 3px 6px; }
-
-.alarmWrapper .alarmListTable .editMinutes {
-  padding: 3px 5px 3px 2px; }
-
-.alarmWrapper .alarmListTable .bordered {
-  border: 1px solid #c0c3c6; }
-
-.alarmWrapper .alarmListTable .edit {
-  margin-left: 20px;
-  margin-right: 20px; }
-
-.alarmWrapper .notification {
-  min-height: 40px;
-  position: relative;
-  font-size: 14px;
-  box-sizing: border-box; }
-  .alarmWrapper .notification .noAlarmsMsg {
-    background: #eae9e9;
-    padding: 12px 20px;
-    color: #898888; }
-  .alarmWrapper .notification .notifyMsg {
-    /*position: absolute;*/ }
-  .alarmWrapper .notification .alarmTrigger {
-    background-color: #e7b2b2;
-    font-size: 18px;
-    color: #444242; }
-
-.alarmWrapper .timeSeparator {
-  font-size: 20px; }
+.alarmWrapper .alarmListTable {
+  margin-top: 40px; }
 
 .outer_face {
   position: relative;
