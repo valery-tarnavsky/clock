@@ -357,20 +357,13 @@ p {
       border-top: 0;
       font-family: 'Inconsolata', monospace; }
 
-.alarmWrapper svg {
-  font-size: 16px;
-  cursor: pointer;
-  color: #565555;
-  display: inline-block;
-  min-width: 20px;
-  min-height: 20px; }
-
 .alarmWrapper .addAlarmWrap {
   margin-bottom: 15px; }
 
 .alarmWrapper input {
   width: 55px;
-  display: inline-block; }
+  display: inline-block;
+  font-size: 16px; }
 
 .alarmWrapper .addAlarm {
   display: inline-block;
@@ -379,23 +372,10 @@ p {
 .alarmWrapper .alarmListTable .timeSeparator {
   font-size: 18px; }
 
-.alarmWrapper .alarmListTable a.delete {
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 20px;
-  z-index: 20;
-  background-color: white; }
-
-.alarmWrapper .alarmListTable a i, .alarmWrapper .alarmListTable a svg {
-  position: relative;
-  z-index: 0 !important;
-  border: 1px salmon solid; }
-
 .alarmWrapper .alarmListTable .editInput {
   border: 0;
   background: transparent;
-  width: 25px; }
+  width: 30px; }
 
 .alarmWrapper .alarmListTable .editHours {
   padding: 3px 0px 3px 6px; }
@@ -405,6 +385,9 @@ p {
 
 .alarmWrapper .alarmListTable .bordered {
   border: 1px solid #c0c3c6; }
+
+.alarmWrapper .alarmListTable a {
+  cursor: pointer; }
 
 .alarmWrapper .alarmListTable .edit {
   margin-left: 20px;

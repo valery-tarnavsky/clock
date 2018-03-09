@@ -251,20 +251,14 @@ p{
 }
 
 .alarmWrapper{
-	svg{
-		font-size: 16px;
-		cursor: pointer;
-		color: #565555;
-		display: inline-block;
-		min-width: 20px;
-		min-height: 20px;
-	}
+
 	.addAlarmWrap{
 		margin-bottom: 15px;
 	}
 	input{
 		width: 55px;
 		display: inline-block;
+		font-size: 16px;
 	}
 
 	.addAlarm{
@@ -275,27 +269,10 @@ p{
 		.timeSeparator{
 			font-size: 18px;
 		}
-		a {
-			&.delete {
-				position: relative;
-				display: block;
-				width: 20px;
-				height: 20px;
-				z-index: 20;
-				background-color: rgba(255, 255, 255, 1);
-
-			}
-			i, svg {
-				position: relative;
-				z-index: 0 !important;
-				border: 1px salmon solid;
-			}
-		}
-
 		.editInput {
 			border: 0;
 			background: transparent;
-			width: 25px;
+			width: 30px;
 		}
 		.editHours {
 			padding: 3px 0px 3px 6px;
@@ -306,6 +283,10 @@ p{
 
 		.bordered {
 			border: 1px solid #c0c3c6;
+		}
+
+		a{
+			cursor: pointer;
 		}
 
 		.edit{

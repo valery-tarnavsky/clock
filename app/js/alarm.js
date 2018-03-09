@@ -102,10 +102,10 @@ var alarm = (function (){
                         <input class="editInput editHours" value="${time[0]}" disabled maxlength="2">
                         <span class="timeSeparator">:</span>
                         <input class="editInput editMinutes" value="${time[1]}" disabled maxlength="2">
-                        <i class="fas fa-pencil-alt edit"></i>
-                        <i class="fas fa-save save"></i>
+                        <a class="edit">edit</a> 
+                        <a class="save">save</a> 
                     </td>
-                    <td><i class="far fa-trash-alt delete"></i></td>
+                    <td><a class="delete">delete</a></td>
                  </tr>`;
      }
 
